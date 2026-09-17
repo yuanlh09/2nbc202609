@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2NBC FM 90.1 — Community radio, Kogarah</title>
+<meta name="description" content="2NBC FM 90.1 is community radio broadcasting from Kogarah. Listen live while our full website is being updated.">
+
+<!-- REPLACE: social share image for Facebook / messaging previews -->
+<meta property="og:title" content="2NBC FM 90.1 — Community radio, Kogarah">
+<meta property="og:description" content="Listen live while our full website is being updated.">
+<meta property="og:type" content="website">
+<!-- <meta property="og:image" content="https://yourdomain.com.au/share-image.jpg"> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --shell:#E2E8E9;
+  --paper:#F3F6F6;
+  --ink:#122A33;
+  --ink-soft:#4A6672;
+  --console:#0F2730;
+  --console-2:#16333E;
+  --signal:#F2A007;
+  --onair:#D6453C;
+  --line:rgba(18,42,51,.16);
+  --radius:4px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--shell);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--onair)}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+
+/* ---------- masthead ---------- */
+.masthead{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:22px 0 18px;border-bottom:1px solid var(--line);flex-wrap:wrap;
+}
+.mark{display:flex;align-items:center;gap:14px}
+.logo-slot{
+  width:56px;height:56px;flex:none;border-radius:50%;
+  background:var(--console);color:#fff;
+  display:grid;place-items:center;
+  font-family:"Anybody",sans-serif;font-weight:800;font-size:13px;letter-spacing:.02em;
+}
+/* REPLACE the .logo-slot div in the HTML with:
+   <img class="logo-slot" src="logo.png" alt="2NBC FM logo"> */
+.mark h1{
+  margin:0;font-family:"Anybody",sans-serif;font-weight:800;
+  font-size:26px;line-height:1.05;letter-spacing:-.01em;
+}
+.mark p{margin:2px 0 0;font-size:14px;color:var(--ink-soft)}
+.freq{
+  font-family:"Anybody",sans-serif;font-weight:700;font-size:15px;
+  padding:7px 12px;border:1px solid var(--line);border-radius:100px;color:var(--ink-soft);
+}
+
+/* ---------- lede ---------- */
+.lede{padding:60px 0 34px;max-width:19em}
+.lede h2{
+  margin:0;font-family:"Anybody",sans-serif;font-weight:700;
+  font-size:clamp(34px,6.2vw,58px);line-height:1.02;letter-spacing:-.025em;
+}
+.lede p{margin:20px 0 0;font-size:18px;color:var(--ink-soft);max-width:34em}
+
+/* ---------- console / player ---------- */
+.console{
+  background:var(--console);
+  background-image:linear-gradient(180deg,var(--console-2),var(--console));
+  color:#EAF1F2;border-radius:var(--radius);
+  padding:26px;margin-bottom:8px;
+}
+.console-top{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;margin-bottom:22px;flex-wrap:wrap;
+}
+.status{display:flex;align-items:center;gap:10px;font-size:14px;color:#9FB6BE}
+.dot{width:9px;height:9px;border-radius:50%;background:#54727D;flex:none}
+.console[data-state="playing"] .dot{background:var(--onair);animation:pulse 2.4s ease-in-out infinite}
+.console[data-state="playing"] .status{color:#FFD9D6}
+.console[data-state="loading"] .dot{background:var(--signal)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none !important}}
+
+.deck{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.play{
+  width:92px;height:92px;flex:none;border-radius:50%;border:none;cursor:pointer;
+  background:var(--signal);color:var(--console);
+  display:grid;place-items:center;
+  transition:transform .12s ease,background .12s ease;
+}
+.play:hover{background:#FFB524}
+.play:active{transform:scale(.96)}
+.play svg{width:34px;height:34px;display:block}
+.play .pause-icon{display:none}
+.console[data-state="playing"] .play .play-icon{display:none}
+.console[data-state="playing"] .play .pause-icon{display:block}
+
+.deck-copy{flex:1 1 220px;min-width:200px}
+.deck-copy strong{
+  display:block;font-family:"Anybody",sans-serif;font-weight:700;
+  font-size:22px;letter-spacing:-.01em;
+}
+.deck-copy span{display:block;font-size:14px;color:#9FB6BE;margin-top:4px}
+
+.vol{display:flex;align-items:center;gap:10px;min-width:180px}
+.vol svg{width:18px;height:18px;flex:none;fill:#9FB6BE}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;width:100%;height:22px;background:none;cursor:pointer;
+}
+input[type=range]::-webkit-slider-runnable-track{height:3px;background:#3C5A66;border-radius:2px}
+input[type=range]::-moz-range-track{height:3px;background:#3C5A66;border-radius:2px}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+  background:#EAF1F2;margin-top:-6.5px;border:none;
+}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#EAF1F2;border:none}
+
+.fallback{margin:18px 0 0;font-size:13px;color:#8EA7B0}
+.fallback a{color:#8EA7B0}
+
+/* ---------- dial ---------- */
+.dial{padding:14px 0 62px}
+.dial-track{position:relative;height:40px;border-bottom:1px solid var(--line)}
+.dial-ticks{
+  position:absolute;inset:auto 0 0;height:11px;
+  background-image:repeating-linear-gradient(to right,var(--line) 0 1px,transparent 1px 2.5%);
+}
+.dial-marks{position:relative;height:100%}
+.dial-mark{position:absolute;bottom:0;transform:translateX(-50%);font-size:12px;color:var(--ink-soft)}
+.dial-mark::after{content:"";position:absolute;left:50%;bottom:-1px;width:1px;height:18px;background:var(--line)}
+.dial-here{position:absolute;bottom:0;transform:translateX(-50%);text-align:center}
+.dial-here b{
+  display:block;font-family:"Anybody",sans-serif;font-weight:700;font-size:15px;color:var(--ink);
+  background:var(--shell);padding:0 6px;
+}
+.dial-here::after{content:"";position:absolute;left:50%;bottom:-8px;width:2px;height:26px;background:var(--onair)}
+
+/* ---------- panels ---------- */
+.panels{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding-bottom:64px}
+@media (max-width:760px){.panels{grid-template-columns:1fr}}
+
+.photo-slot{
+  background:var(--paper);border:1px dashed rgba(18,42,51,.35);border-radius:var(--radius);
+  aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:24px;color:var(--ink-soft);
+}
+.photo-slot span{font-size:14px;max-width:22em}
+/* REPLACE the .photo-slot div with:
+   <img src="studio.jpg" alt="The 2NBC studio" style="width:100%;border-radius:4px"> */
+
+.contact h3{
+  margin:0 0 18px;font-family:"Anybody",sans-serif;font-weight:700;font-size:24px;letter-spacing:-.015em;
+}
+.contact dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:12px 20px;align-items:baseline}
+.contact dt{font-size:14px;color:var(--ink-soft)}
+.contact dd{margin:0;font-size:17px}
+.ph{
+  background:rgba(242,160,7,.22);
+  box-shadow:inset 0 -1px 0 rgba(18,42,51,.3);
+  padding:1px 5px;border-radius:2px;
+}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:26px 0 44px;font-size:14px;color:var(--ink-soft)}
+footer p{margin:0 0 8px;max-width:48em}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="mark">
+      <!-- REPLACE: swap this circle for <img class="logo-slot" src="logo.png" alt="2NBC FM logo"> -->
+      <div class="logo-slot" aria-hidden="true">LOGO</div>
+      <div>
+        <h1>2NBC FM</h1>
+        <p>Community radio, Kogarah</p>
+      </div>
+    </div>
+    <div class="freq">90.1 FM</div>
+  </header>
+
+  <section class="lede">
+    <h2>The website is being rebuilt. The radio hasn't stopped.</h2>
+    <p>This is a temporary page while we finish our new site. In the meantime you can listen to
+       2NBC 90.1 FM live right here, or tune in anywhere across the St George area.</p>
+  </section>
+
+  <section class="console" id="console" data-state="idle" aria-label="Live stream player">
+    <div class="console-top">
+      <div class="status">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="statusText">Ready to play</span>
+      </div>
+      <div class="vol">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+        <input type="range" id="volume" min="0" max="100" value="80" aria-label="Volume">
+      </div>
+    </div>
+
+    <div class="deck">
+      <button class="play" id="playBtn" aria-label="Play the live stream">
+        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg>
+        <svg class="pause-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+      </button>
+      <div class="deck-copy">
+        <strong>Listen live</strong>
+        <span>2NBC 90.1 FM — streaming now</span>
+      </div>
+    </div>
+
+    <p class="fallback">Player not working on your device?
+      <a href="https://stream03.syd.hostgeek.com.au:8018/stream" target="_blank" rel="noopener">Open the stream directly</a>
+      in VLC, iTunes or your browser.</p>
+
+    <audio id="player" preload="none" crossorigin="anonymous"></audio>
+  </section>
+
+  <section class="dial" aria-hidden="true">
+    <div class="dial-track">
+      <div class="dial-ticks"></div>
+      <div class="dial-marks">
+        <span class="dial-mark" style="left:2.4%">88</span>
+        <span class="dial-mark" style="left:22%">92</span>
+        <span class="dial-mark" style="left:41.5%">96</span>
+        <span class="dial-mark" style="left:61%">100</span>
+        <span class="dial-mark" style="left:80.5%">104</span>
+        <span class="dial-mark" style="left:97.6%">108</span>
+        <span class="dial-here" style="left:12.7%"><b>90.1</b></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="panels">
+    <!-- REPLACE: drop in a photo of the studio, the team or an outside broadcast -->
+    <div class="photo-slot">
+      <span>Add your photo here — studio, presenters or an outside broadcast. Around 1200&nbsp;×&nbsp;900px works well.</span>
+    </div>
+
+    <div class="contact">
+      <h3>Get in touch</h3>
+      <dl>
+        <dt>Phone</dt>
+        <dd><a href="tel:+61200000000"><span class="ph">(02) 0000 0000</span></a></dd>
+
+        <dt>Studio line</dt>
+        <dd><a href="tel:+61200000000"><span class="ph">(02) 0000 0000</span></a></dd>
+
+        <dt>Email</dt>
+        <dd><a href="mailto:hello@example.com"><span class="ph">hello@example.com</span></a></dd>
+
+        <dt>Post</dt>
+        <dd><span class="ph">PO Box 000, Kogarah NSW 2217</span></dd>
+
+        <dt>Studio</dt>
+        <dd><span class="ph">Street address, Kogarah NSW 2217</span></dd>
+
+        <dt>Facebook</dt>
+        <dd><a href="#"><span class="ph">facebook.com/yourpage</span></a></dd>
+
+        <dt>Instagram</dt>
+        <dd><a href="#"><span class="ph">@yourhandle</span></a></dd>
+      </dl>
+    </div>
+  </section>
+
+  <footer>
+    <p><span class="ph">Add a line here about the station</span> — when you're on air, how to volunteer,
+       or when the new website is expected.</p>
+    <p>&copy; <span id="year">2026</span> 2NBC FM 90.1, Kogarah NSW.</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var STREAM  = "https://stream03.syd.hostgeek.com.au:8018/stream";
+  var audio   = document.getElementById("player");
+  var btn     = document.getElementById("playBtn");
+  var box     = document.getElementById("console");
+  var status  = document.getElementById("statusText");
+  var volume  = document.getElementById("volume");
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+  audio.volume = volume.value / 100;
+
+  function setState(state, text) {
+    box.dataset.state = state;
+    status.textContent = text;
+    btn.setAttribute("aria-label", state === "playing" ? "Stop the live stream" : "Play the live stream");
+  }
+
+  function start() {
+    // Fresh URL each time so the browser doesn't replay a stale buffer.
+    audio.src = STREAM + "?t=" + Date.now();
+    setState("loading", "Connecting…");
+    var p = audio.play();
+    if (p) p.catch(function () {
+      setState("idle", "Couldn't start. Tap play to try again.");
+    });
+  }
+
+  function stop() {
+    audio.pause();
+    audio.removeAttribute("src");
+    audio.load();
+    setState("idle", "Stopped");
+  }
+
+  btn.addEventListener("click", function () {
+    if (box.dataset.state === "idle") { start(); } else { stop(); }
+  });
+
+  audio.addEventListener("playing", function () { setState("playing", "On air — live now"); });
+  audio.addEventListener("waiting", function () { setState("loading", "Buffering…"); });
+  audio.addEventListener("error", function () {
+    if (audio.getAttribute("src")) setState("idle", "Stream unavailable. Tap play to try again.");
+  });
+
+  volume.addEventListener("input", function () { audio.volume = this.value / 100; });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.code === "Space" && e.target === document.body) { e.preventDefault(); btn.click(); }
+  });
+})();
+</script>
+</body>
+</html>
